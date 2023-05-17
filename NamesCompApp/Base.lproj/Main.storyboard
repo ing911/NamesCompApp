@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--First View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NamesCompApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="NamesCompApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,6 +38,9 @@
                                         <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resultButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="O1u-sv-06I"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nP4-X3-aeQ" userLabel="Stack View Main">
                                 <rect key="frame" x="20" y="225" width="350" height="98"/>
@@ -89,15 +92,20 @@
                             <constraint firstItem="nP4-X3-aeQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qqu-xU-q5h"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="partnerNameTF" destination="bdS-mg-Ax7" id="QSY-lZ-Fwy"/>
+                        <outlet property="yourNameTF" destination="ILa-4g-BD5" id="Cgi-ug-t9y"/>
+                        <segue destination="cxc-BA-sAq" kind="show" identifier="goToResult" id="dcU-wI-1gy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="9.9236641221374047" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="Agc-ib-Dfj">
             <objects>
-                <viewController id="cxc-BA-sAq" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="cxc-BA-sAq" customClass="ResultViewController" customModule="NamesCompApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8p2-n2-e6r">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,6 +169,12 @@
                             <constraint firstItem="VHa-5C-fyy" firstAttribute="top" secondItem="gGu-lL-hDJ" secondAttribute="bottom" constant="40" id="qll-A5-5d8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Ocg-O7-d98"/>
+                    <connections>
+                        <outlet property="namesLabel" destination="kkH-CZ-nIQ" id="ktt-AK-CsT"/>
+                        <outlet property="progressView" destination="ie5-b9-DWd" id="Vuv-Cd-Z9F"/>
+                        <outlet property="resultLabel" destination="gGu-lL-hDJ" id="Oc3-oM-dZy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bz4-6L-XUF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
