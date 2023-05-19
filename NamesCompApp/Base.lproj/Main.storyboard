@@ -159,7 +159,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="backButtonTapped" destination="cxc-BA-sAq" eventType="touchUpInside" id="H4U-9O-4gI"/>
+                                    <action selector="backButtonTapped" destination="cxc-BA-sAq" eventType="touchUpInside" id="QLQ-Hd-9Tk"/>
                                 </connections>
                             </button>
                         </subviews>

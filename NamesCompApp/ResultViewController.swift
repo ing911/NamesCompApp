@@ -20,7 +20,6 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         resultValue = findResult() // получаем нужное число ("соответстивие" имён)
         namesLabel.text = "\(firstName ?? "") and \(secondName ?? "")" // тест с именами
         resultLabel.text = resultValue.formatted(.percent) // число в процентах %

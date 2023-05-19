@@ -12,10 +12,6 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var yourNameTF: UITextField!
     @IBOutlet weak var partnerNameTF: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // метод, срабатывающий при переходе с одного экрана на другой (из FirstVC -> ResultVC)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destinationVC = segue.destination as? ResultViewController else { return }
@@ -26,6 +22,15 @@ class FirstViewController: UIViewController {
     
     // метод, который будет срабатывать по нажатию на кнопку
     @IBAction func resultButtonTapped() {
+        // извлекаем опциональные значения из строк, введённых в текстовые поля:
+        guard let firstName = yourNameTF.text, let secondName = partnerNameTF.text else { return }
+        // если одна или обе текстовые строки пустые, вызываем алёрт:
+        if firstName.isEmpty || secondName.isEmpty {
+            showAlert(title: "Names are missing",
+                      message: "Please enter both names 😊") // эмодзи ctrl + cmd + пробел
+            return
+        }
+        // если оба текстовых поля не будут пустыми и условие не будет соблюдаться, будем переходить на след. экран:
         performSegue(withIdentifier: "goToResult", sender: nil)
         // данный метод используется для перехода по segue с идентификатором
         // переход с одного VC на другой происходит по segue с идентификатором
@@ -38,6 +43,18 @@ class FirstViewController: UIViewController {
         yourNameTF.text = ""
         partnerNameTF.text = ""
         // после возвращения в FirstVC очищаем поля обоих textField-ов
+    }
+}
+
+    // создаём алёрт
+extension FirstViewController {
+    private func showAlert(title: String, message: String) {
+        // внутри метода создаём экземпляр класса UIAlertController
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        // создаём экземпляр класса UIAlertAction
+        let okAction = UIAlertAction(title: "OK", style: .default) // создаём кнопку "ОК" для алёрта
+        alert.addAction(okAction) // добавляем кнопку "ОК"
+        present(alert, animated: true) // отображаем алёрт-контроллер
     }
 }
 
