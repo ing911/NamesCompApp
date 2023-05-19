@@ -13,8 +13,8 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var resultLabel: UILabel!
     
-    var firstName: String?
-    var secondName: String?
+    var firstName: String!
+    var secondName: String!
     
     private var resultValue = 0 // используется для расчёта результата совместимости имён
     
@@ -26,6 +26,13 @@ class ResultViewController: UIViewController {
         resultLabel.text = resultValue.formatted(.percent) // число в процентах %
         progressView.progress = Float(resultValue) / 100 // шкала прогресса
         progressView.transform = progressView.transform.scaledBy(x: 1, y: 4) // делаем progressView толще и заметнее
+    }
+    
+    // метод, который будет срабатывать по нажатию на кнопку
+    // указываем момент, в котором будет срабатывать переход по кнопке из ResultVC -> FirstVC
+    @IBAction func backButtonTapped() {
+        performSegue(withIdentifier: "unwindSegue", sender: nil)
+        // теперь переход у нас привязан к самому VC(ResultVC), а не к кнопке
     }
     
     // функция, с помощью которой мы получаем некоторое число для имени
